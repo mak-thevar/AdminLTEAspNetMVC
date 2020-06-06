@@ -59,6 +59,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -236,6 +239,7 @@
     <Content Include="Views\web.config" />
     <Content Include="Configs\appSettings.config" />
     <Content Include="Configs\connectionStrings.config" />
+    <Content Include="Configs\log4net.config" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_DefaultLayout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -368,10 +372,9 @@
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Target Name="NpmInstall" BeforeTargets="BeforeBuild" Inputs="WebCore\package.json" Outputs="WebCore\success.txt">
-	  <Exec Command="npm run compile" WorkingDirectory="WebCore" Condition="!Exists('WebCore\plugins')" ConsoleToMSBuild="true">
-		  <Output TaskParameter="ConsoleOutput" ItemName="OutputOfExec" />
-	  </Exec>
-	 
+    <Exec Command="npm run compile" WorkingDirectory="WebCore" Condition="!Exists('WebCore\plugins')" ConsoleToMSBuild="true">
+      <Output TaskParameter="ConsoleOutput" ItemName="OutputOfExec" />
+    </Exec>
   </Target>
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
