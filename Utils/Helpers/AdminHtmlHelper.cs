@@ -15,7 +15,7 @@ namespace AspMVCAdminLTE.Utils.Helpers
     {
         public class TableHeader
         {
-            public Dictionary<string,string> TableHeaderInfo { get; set; }
+            public Dictionary<string, string> TableHeaderInfo { get; set; } = new Dictionary<string, string>();
         }
         public class TableHelper
         {

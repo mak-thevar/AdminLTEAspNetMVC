@@ -9,8 +9,6 @@ using Autofac.Integration.WebApi;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(AspMVCAdminLTE.App_Start.AutofacConfig))]
-
 namespace AspMVCAdminLTE.App_Start
 {
     public class AutofacConfig
