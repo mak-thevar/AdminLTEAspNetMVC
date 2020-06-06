@@ -25,7 +25,7 @@
     "css-minify:extra-components": "npm run css-minify-bash -- dist/css/alt/adminlte.extra-components.min.css dist/css/alt/adminlte.extra-components.css",
     "css-minify:pages": "npm run css-minify-bash -- dist/css/alt/adminlte.pages.min.css dist/css/alt/adminlte.pages.css",
     "css-minify:plugins": "npm run css-minify-bash -- dist/css/alt/adminlte.plugins.min.css dist/css/alt/adminlte.plugins.css",
-    "compile": "npm-run-all --parallel plugins js css-all",
+    "compile": "npm i && npm-run-all --parallel plugins js css-all",
     "js": "npm-run-all --sequential js-compile js-minify",
     "js-compile": "rollup --config build/config/rollup.config.js --sourcemap",
     "js-minify": "terser --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/adminlte.js.map,includeSources,url=adminlte.min.js.map\" --output dist/js/adminlte.min.js dist/js/adminlte.js",

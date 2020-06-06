@@ -368,7 +368,10 @@
     <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Target Name="NpmInstall" BeforeTargets="BeforeBuild" Inputs="WebCore\package.json" Outputs="WebCore\success.txt">
-    <Exec Command="npm run compile" WorkingDirectory="WebCore" Condition="!Exists('WebCore\plugins')" />
+	  <Exec Command="npm run compile" WorkingDirectory="WebCore" Condition="!Exists('WebCore\plugins')" ConsoleToMSBuild="true">
+		  <Output TaskParameter="ConsoleOutput" ItemName="OutputOfExec" />
+	  </Exec>
+	 
   </Target>
   <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
