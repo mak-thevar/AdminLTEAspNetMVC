@@ -8,6 +8,7 @@ using AspMVCAdminLTE.App_Start;
 using AspMVCAdminLTE.Providers;
 using AspMVCAdminLTE.Repository;
 using Autofac.Integration.WebApi;
+using log4net.Config;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
@@ -35,7 +36,7 @@ namespace AspMVCAdminLTE
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
-           // Database.SetInitializer(new MigrateDatabaseToLatestVersion<RepositoryContext, Migrations.Configuration>());
+            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<RepositoryContext, Migrations.Configuration>());
         }
 
         public void ConfigureOAuth(IAppBuilder app)

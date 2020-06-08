@@ -218,6 +218,9 @@
     <Compile Include="Infrastructure\ApiAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\ApiExceptionHandlerAttribute.cs" />
     <Compile Include="Infrastructure\BaseApiController.cs" />
+    <Compile Include="Infrastructure\ILogManager.cs" />
+    <Compile Include="Infrastructure\LogJsonLayout.cs" />
+    <Compile Include="Infrastructure\LogManager.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\SampleData.cs" />
     <Compile Include="Providers\TokenAuthProvider.cs" />
