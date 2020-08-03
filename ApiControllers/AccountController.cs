@@ -10,7 +10,6 @@ namespace AspMVCAdminLTE.ApiControllers
 {
     public class AccountController : BaseApiController
     {
-
         private readonly IRepositoryWrapper repositoryWrapper;
 
         public AccountController(IRepositoryWrapper repositoryWrapper)

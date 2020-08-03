@@ -151,6 +151,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DefaultDB.mdf" />
+    <Content Include="App_Data\DefaultDB_log.ldf">
+      <DependentUpon>DefaultDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="WebCore\build\config\postcss.config.js" />
     <Content Include="WebCore\build\config\rollup.config.js" />
@@ -211,12 +215,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Entity\Enums\UserRole.cs" />
     <Compile Include="Infrastructure\ApiAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\ApiExceptionHandlerAttribute.cs" />
     <Compile Include="Infrastructure\BaseApiController.cs" />
+    <Compile Include="Migrations\202007131656182_AddingUserTable.cs" />
+    <Compile Include="Migrations\202007131656182_AddingUserTable.designer.cs">
+      <DependentUpon>202007131656182_AddingUserTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\SampleData.cs" />
+    <Compile Include="Models\UserLoginModel.cs" />
     <Compile Include="Providers\TokenAuthProvider.cs" />
     <Compile Include="Repository\RepositoryContext.cs" />
     <Compile Include="Entity\Enums\Gender.cs" />
@@ -249,6 +259,10 @@
     <Content Include="Views\Shared\Partials\_CardHeader.cshtml" />
     <Content Include="Views\Default\SimpleTables.cshtml" />
     <Content Include="Views\Default\SimpleForm.cshtml" />
+    <Content Include="Views\Shared\navMenu.json" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\ForgetPassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -335,8 +349,11 @@
     <Content Include="WebCore\package.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <EmbeddedResource Include="Migrations\202007131656182_AddingUserTable.resx">
+      <DependentUpon>202007131656182_AddingUserTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -352,7 +369,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54611</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44390/</IISUrl>
+          <IISUrl>https://localhost:44392/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

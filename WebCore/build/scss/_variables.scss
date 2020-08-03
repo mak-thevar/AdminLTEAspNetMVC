@@ -17,14 +17,7 @@ $maroon: #d81b60 !default;
 $black: #111 !default;
 $gray-x-light: #d2d6de !default;
 
-$colors: map-merge((
-    'lightblue': $lightblue,
-    'navy': $navy,
-    'olive': $olive,
-    'lime': $lime,
-    'fuchsia': $fuchsia,
-    'maroon': $maroon,
-), $colors);
+$colors: map-merge(( 'lightblue': $lightblue, 'navy': $navy, 'olive': $olive, 'lime': $lime, 'fuchsia': $fuchsia, 'maroon': $maroon, ), $colors);
 
 // LAYOUT
 // --------------------------------------------------------
@@ -71,7 +64,6 @@ $nav-link-sm-padding-y: .35rem !default;
 $nav-link-sm-height: ($font-size-sm * $line-height-sm + $nav-link-sm-padding-y * 1.785) !default;
 $main-header-height-sm-inner: ($nav-link-sm-height + ($main-header-link-padding-y * 2)) !default;
 $main-header-height-sm: calc(#{$main-header-height-sm-inner} + #{$main-header-bottom-border-width}) !default;
-
 
 // Main header skins
 $main-header-dark-form-control-bg: hsla(100, 100%, 100%, 0.2) !default;
@@ -192,7 +184,6 @@ $transition-fn: ease-in-out !default;
 $font-size-xs: ($font-size-base * .75) !default;
 $font-size-xl: ($font-size-base * 2) !default;
 
-
 // BUTTON
 // --------------------------------------------------------
 $button-default-background-color: $gray-100 !default;
@@ -205,18 +196,11 @@ $button-line-height-xs: $line-height-sm !default;
 $button-font-size-xs: ($font-size-base * .75) !default;
 $button-border-radius-xs: .15rem !default;
 
-  
 // ELEVATION
 // --------------------------------------------------------
 $elevations: ();
-$elevations: map-merge((
-    1: unquote('0 1px 3px ' + rgba($black, 0.12) + ', 0 1px 2px ' + rgba($black, 0.24)),
-    2: unquote('0 3px 6px ' + rgba($black, 0.16) + ', 0 3px 6px ' + rgba($black, 0.23)),
-    3: unquote('0 10px 20px ' + rgba($black, 0.19) + ', 0 6px 6px ' + rgba($black, 0.23)),
-    4: unquote('0 14px 28px ' + rgba($black, 0.25) + ', 0 10px 10px ' + rgba($black, 0.22)),
-    5: unquote('0 19px 38px ' + rgba($black, 0.30) + ', 0 15px 12px ' + rgba($black, 0.22)),
-), $elevations);
-  
+$elevations: map-merge(( 1: unquote('0 1px 3px ' + rgba($black, 0.12) + ', 0 1px 2px ' + rgba($black, 0.24)), 2: unquote('0 3px 6px ' + rgba($black, 0.16) + ', 0 3px 6px ' + rgba($black, 0.23)), 3: unquote('0 10px 20px ' + rgba($black, 0.19) + ', 0 6px 6px ' + rgba($black, 0.23)), 4: unquote('0 14px 28px ' + rgba($black, 0.25) + ', 0 10px 10px ' + rgba($black, 0.22)), 5: unquote('0 19px 38px ' + rgba($black, 0.30) + ', 0 15px 12px ' + rgba($black, 0.22)), ), $elevations);
+
 // RIBBON
 // --------------------------------------------------------
 $ribbon-border-size: 3px !default;

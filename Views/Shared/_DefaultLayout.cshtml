@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -32,12 +31,10 @@
 </head>
 <body class="hold-transition sidebar-mini">
 
-   
     <div class="wrapper">
         <!-- Navbar -->
         @Html.Partial("Partials/_NavBarMainHeader")
         <!-- /.navbar -->
-
         <!-- Main Sidebar Container -->
         @Html.Partial("Partials/_MainSideBarContainer")
 
@@ -51,7 +48,6 @@
                 <div class="container-fluid">
 
                     @RenderBody()
-
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
@@ -61,8 +57,9 @@
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 1.0.1
             </div>
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+            <strong>
+                Copyright &copy; @Html.Raw(AspMVCAdminLTE.Utils.AppSettings.FooterText) All rights
+                reserved.
         </footer>
 
         <!-- Control Sidebar -->
@@ -91,81 +88,110 @@
     <script src="~/WebCore/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Bootstrap Switch -->
     <script src="~/WebCore/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+
+    <script src="~/WebCore/plugins/gasparesganga-jquery-loading-overlay/dist/loadingoverlay.js"></script>
+
     <!-- AdminLTE App -->
     <script src="~/WebCore/dist/js/adminlte.min.js"></script>
     <!-- Page script -->
     <script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
 
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
 
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+            //Money Euro
+            $('[data-mask]').inputmask()
 
-    //Date range picker
-    $('#reservationdate').datetimepicker({
-        format: 'L'
-    });
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
+            //Date range picker
+            $('#reservationdate').datetimepicker({
+                format: 'L'
+            });
+            //Date range picker
+            $('#reservation').daterangepicker()
+            //Date range picker with time picker
+            $('#reservationtime').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                locale: {
+                    format: 'MM/DD/YYYY hh:mm A'
+                }
+            })
+            //Date range as a button
+            $('#daterange-btn').daterangepicker(
+                {
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function (start, end) {
+                    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+                }
+            )
 
-    //Timepicker
-    $('#timepicker').datetimepicker({
-      format: 'LT'
-    })
+            //Timepicker
+            $('#timepicker').datetimepicker({
+                format: 'LT'
+            })
 
-    //Bootstrap Duallistbox
-    $('.duallistbox').bootstrapDualListbox()
+            //Bootstrap Duallistbox
+            $('.duallistbox').bootstrapDualListbox()
 
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
+            //Colorpicker
+            $('.my-colorpicker1').colorpicker()
+            //color picker with addon
+            $('.my-colorpicker2').colorpicker()
 
-    $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-    });
+            $('.my-colorpicker2').on('colorpickerChange', function (event) {
+                $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+            });
 
-    $("input[data-bootstrap-switch]").each(function(){
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
-    });
+            $("input[data-bootstrap-switch]").each(function () {
+                $(this).bootstrapSwitch('state', $(this).prop('checked'));
+            });
 
-  })
+            function showPreloader(elementId) {
+                if (elementId) {
+                    $(elementId).LoadingOverlay("show", { background: "rgba(200, 227, 225, 0.63)" });
+                }
+                else {
+                    $.LoadingOverlay("show");
+                }
+            }
+            function hidePreLoader(elementId) {
+                if (elementId) {
+                    $(elementId).LoadingOverlay("hide", { background: "rgba(200, 227, 225, 0.63)" });
+                }
+                else {
+                    $.LoadingOverlay("hide");
+                }
+            }
+
+            // Update the nav menu based on the url path
+            setTimeout(() => {
+                $('nav li a[href="' + location.pathname + '"]').addClass('active').parents('.has-treeview').addClass('menu-open').find('a:eq(0)').addClass('active');
+            }, 400);
+
+            window.onbeforeunload = function () {
+                showPreloader('body');
+            }
+
+        })
     </script>
 </body>
 </html>

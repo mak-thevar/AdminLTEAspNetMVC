@@ -81,6 +81,7 @@
     "flag-icon-css": "^3.4.6",
     "flot": "^4.2.0",
     "fs-extra": "^9.0.0",
+    "gasparesganga-jquery-loading-overlay": "^2.1.7",
     "icheck-bootstrap": "^3.0.1",
     "inputmask": "^5.0.3",
     "ion-rangeslider": "^2.3.1",

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Web;
 
 namespace AspMVCAdminLTE.Utils
 {
@@ -54,6 +51,7 @@ namespace AspMVCAdminLTE.Utils
             }
             return ByteArraysEqual(buffer3, buffer4);
         }
+
         private static bool ByteArraysEqual(byte[] b1, byte[] b2)
         {
             if (b1 == b2) return true;
@@ -65,6 +63,7 @@ namespace AspMVCAdminLTE.Utils
             }
             return true;
         }
+
         public static string EncryptData(string textData, string Encryptionkey)
         {
             var _encyptor = new RijndaelCrypt("balendin");

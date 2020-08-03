@@ -1,12 +1,8 @@
 ﻿using AspMVCAdminLTE.Entity;
 using AspMVCAdminLTE.Repository;
 using Microsoft.Owin.Security.OAuth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace AspMVCAdminLTE.Providers
 {
@@ -14,14 +10,17 @@ namespace AspMVCAdminLTE.Providers
     {
         private User user = null;
         private IRepositoryWrapper _repoWrapper;
+
         public TokenAuthProvider(IRepositoryWrapper repoWrapper)
         {
             _repoWrapper = repoWrapper;
         }
+
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
             context.Validated();
         }
+
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             context.AdditionalResponseParameters.Add("UserId", this.user.Id);
@@ -33,20 +32,19 @@ namespace AspMVCAdminLTE.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            
-                var user = _repoWrapper.User.ValidateUser(context.UserName, context.Password);
-                if (user == null)
-                {
-                    context.SetError("invalid_grant", "Provided username and password is incorrect");
-                    return;
-                }
-                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-                identity.AddClaim(new Claim(ClaimTypes.Role, user.UserRole.ToString()));
-                identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
-                identity.AddClaim(new Claim("Mobile", user.Mobile));
-                identity.AddClaim(new Claim("Id", user.Id.ToString()));
-                this.user = user;
-                context.Validated(identity);
+            var user = _repoWrapper.User.ValidateUser(context.UserName, context.Password);
+            if (user == null)
+            {
+                context.SetError("invalid_grant", "Provided username and password is incorrect");
+                return;
+            }
+            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+            identity.AddClaim(new Claim(ClaimTypes.Role, user.UserRole.ToString()));
+            identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
+            identity.AddClaim(new Claim("Mobile", user.Mobile));
+            identity.AddClaim(new Claim("Id", user.Id.ToString()));
+            this.user = user;
+            context.Validated(identity);
         }
     }
 }

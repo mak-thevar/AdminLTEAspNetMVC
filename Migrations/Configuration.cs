@@ -1,9 +1,7 @@
 ﻿namespace AspMVCAdminLTE.Migrations
 {
     using AspMVCAdminLTE.Entity;
-    using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Validation;
     using System.Linq;
@@ -29,7 +27,6 @@
             }
             catch (DbEntityValidationException ex)
             {
-
                 throw;
             }
         }
@@ -46,7 +43,8 @@
                    Email = "superadmin@gmail.com",
                    Mobile = "0000000000",
                    Password = Utils.Encryption.HashString("pwd@1234"),
-                   UserRole = Entity.Enums.UserRole.Admin
+                   UserRole = Entity.Enums.UserRole.Admin,
+                   Gender = Entity.Enums.Gender.Male
                }
            };
             return users;

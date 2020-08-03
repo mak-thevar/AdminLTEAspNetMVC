@@ -1,13 +1,9 @@
-﻿using System;
-using System.Reflection;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using AspMVCAdminLTE.Repository;
+﻿using AspMVCAdminLTE.Repository;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
-using Microsoft.Owin;
-using Owin;
+using System.Reflection;
+using System.Web.Mvc;
 
 namespace AspMVCAdminLTE.App_Start
 {
@@ -22,6 +18,8 @@ namespace AspMVCAdminLTE.App_Start
               .AsImplementedInterfaces();
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
             builder.RegisterControllers(typeof(Controllers.DefaultController).Assembly);
+            builder.RegisterType<RepositoryContext>().AsSelf().InstancePerRequest();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             return container;

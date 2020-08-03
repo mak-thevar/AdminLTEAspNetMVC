@@ -1,16 +1,14 @@
-﻿using System;
-using System.Data.Entity;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Routing;
-using AspMVCAdminLTE.App_Start;
+﻿using AspMVCAdminLTE.App_Start;
 using AspMVCAdminLTE.Providers;
 using AspMVCAdminLTE.Repository;
 using Autofac.Integration.WebApi;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using System;
+using System.Web.Http;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 [assembly: OwinStartup(typeof(AspMVCAdminLTE.Startup))]
 
@@ -35,7 +33,7 @@ namespace AspMVCAdminLTE
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
-           // Database.SetInitializer(new MigrateDatabaseToLatestVersion<RepositoryContext, Migrations.Configuration>());
+            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<RepositoryContext, Migrations.Configuration>());
         }
 
         public void ConfigureOAuth(IAppBuilder app)
@@ -43,7 +41,6 @@ namespace AspMVCAdminLTE
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
-
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromDays(90),

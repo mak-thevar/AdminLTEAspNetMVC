@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace AspMVCAdminLTE.Utils
 {
@@ -13,46 +10,45 @@ namespace AspMVCAdminLTE.Utils
 
         /// <summary>
         /// Decryptor
-        /// 
+        ///
         private readonly ICryptoTransform _decryptor;
 
         /// <summary>
         /// Encryptor
-        /// 
+        ///
         private readonly ICryptoTransform _encryptor;
 
         /// <summary>
         /// 16-byte Private Key
-        /// 
+        ///
         private static readonly byte[] IV = Encoding.UTF8.GetBytes("NdRgUkXp2s5v8x/A");
 
         /// <summary>
         /// Public Key
-        /// 
+        ///
         private readonly byte[] _password;
 
         /// <summary>
         /// Rijndael cipher algorithm
-        /// 
+        ///
         private readonly RijndaelManaged _cipher;
 
-        #endregion
+        #endregion Private/Protected Member Variables
 
         #region Private/Protected Properties
 
         private ICryptoTransform Decryptor { get { return _decryptor; } }
         private ICryptoTransform Encryptor { get { return _encryptor; } }
 
-        #endregion
+        #endregion Private/Protected Properties
 
-        #region Private/Protected Methods
-        #endregion
+
 
         #region Constructor
 
         /// <summary>
         /// Constructor
-        /// 
+        ///
         /// <param name="password">Public key
         public RijndaelCrypt(string password)
         {
@@ -65,19 +61,17 @@ namespace AspMVCAdminLTE.Utils
             _cipher.Padding = PaddingMode.Zeros;
             _decryptor = _cipher.CreateDecryptor(_password, IV);
             _encryptor = _cipher.CreateEncryptor(_password, IV);
-
         }
 
-        #endregion
+        #endregion Constructor
 
-        #region Public Properties
-        #endregion
+
 
         #region Public Methods
 
         /// <summary>
         /// Decryptor
-        /// 
+        ///
         /// <param name="text">Base64 string to be decrypted
         /// <returns>
         public string Decrypt(string text)
@@ -99,13 +93,11 @@ namespace AspMVCAdminLTE.Utils
                 Console.WriteLine("The object has already been disposed." + oe);
                 return null;
             }
-
-
         }
 
         /// <summary>
         /// Encryptor
-        /// 
+        ///
         /// <param name="text">String to be encrypted
         /// <returns>
         public string Encrypt(string text)
@@ -125,9 +117,8 @@ namespace AspMVCAdminLTE.Utils
                 Console.WriteLine("The object has already been disposed." + oe);
                 return null;
             }
-
         }
 
-        #endregion
+        #endregion Public Methods
     }
 }

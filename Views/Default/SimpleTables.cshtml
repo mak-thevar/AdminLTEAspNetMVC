@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "SimpleTables";
 }
 @using AspMVCAdminLTE.Utils.Helpers
@@ -73,7 +72,7 @@
         <div class="card">
 
             @Html.Partial("Partials/_CardHeader", new ViewDataDictionary { { "title", "Condensed Full Width Table" } })
-            
+
             <!-- /.card-header -->
             <div class="card-body p-0">
                 <table class="table table-sm">
@@ -290,14 +289,14 @@
                     </div>
                 </div>
             </div>
-            @{ 
+            @{
                 var jsonData = "[\r\n {\r\n   \"ID\": 183,\r\n   \"User\": \"John Doe\",\r\n   \"Date\": \"11-7-2014\",\r\n   \"Status\": \"Approved\",\r\n   \"Reason\": \"Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.\"\r\n },\r\n {\r\n   \"ID\": 219,\r\n   \"User\": \"Alexander Pierce\",\r\n   \"Date\": \"11-7-2014\",\r\n   \"Status\": \"Pending\",\r\n   \"Reason\": \"Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.\"\r\n },\r\n {\r\n   \"ID\": 657,\r\n   \"User\": \"Bob Doe\",\r\n   \"Date\": \"11-7-2014\",\r\n   \"Status\": \"Approved\",\r\n   \"Reason\": \"Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.\"\r\n },\r\n {\r\n   \"ID\": 175,\r\n   \"User\": \"Mike Doe\",\r\n   \"Date\": \"11-7-2014\",\r\n   \"Status\": \"Denied\",\r\n   \"Reason\": \"Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.\"\r\n }\r\n]";
                 var sampleDataList = Json.Decode<List<SampleData>>(jsonData);
             }
             <!-- /.card-header -->
-        <div class="card-body table-responsive p-0">
-            @AdminHtmlHelper.TableHelper.BuildBasicTable(sampleDataList, "class='table table-hover text-nowrap'")
-        </div>
+            <div class="card-body table-responsive p-0">
+                @AdminHtmlHelper.TableHelper.BuildBasicTable(sampleDataList, "class='table table-hover text-nowrap'")
+            </div>
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
@@ -323,6 +322,33 @@
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0" style="height: 300px;">
                 @AdminHtmlHelper.TableHelper.BuildBasicTable(sampleDataList, "class='table table-head-fixed text-nowrap'")
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Table with Action Column</h3>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                @AdminHtmlHelper.TableHelper.BuildBasicTable(sampleDataList, "class='table table-head-fixed text-nowrap'", editButton: "/Default/SampleTableEdit/", deleteButton: true)
             </div>
             <!-- /.card-body -->
         </div>
