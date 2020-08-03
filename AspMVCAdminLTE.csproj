@@ -151,10 +151,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\DefaultDB.mdf" />
-    <Content Include="App_Data\DefaultDB_log.ldf">
-      <DependentUpon>DefaultDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="WebCore\build\config\postcss.config.js" />
     <Content Include="WebCore\build\config\rollup.config.js" />
@@ -353,7 +349,9 @@
       <DependentUpon>202007131656182_AddingUserTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
