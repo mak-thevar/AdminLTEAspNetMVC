@@ -72,7 +72,7 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/mak-thevar
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [Muthukumar Thevar](#) - mak.thevar@outlook.com
+Name - [Muthukumar Thevar](#) - mak.thevar@outlook.com
 
 Project Link: [https://github.com/mak-thevar/AdminLTEAspNetMVC](https://github.com/mak-thevar/AdminLTEAspNetMVC)
 
