@@ -1,18 +1,30 @@
 name: Build the project
 
-on: [push]
- 
+on:
+ push:
+  branches: master
+   
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup Nuget.exe
-      uses: warrenbuckley/Setup-Nuget@v1
-    - name: Restore packages
+    - uses: actions/checkout@v2
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+      
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+      
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+      
+    - name: Create Build Directory
+      run: mkdir _build
+      
+    - name: Restore Packages
       run: nuget restore AspMVCAdminLTE.sln
-    - name: Setup MSBuild.exe
-      uses: warrenbuckley/Setup-MSBuild@v1
-    - name: Build with MSBuild
-      run: msbuild  AspMVCAdminLTE.sln /p:Configuration=Release
+      
+    - name: Build Solution
+      run: |
+        msbuild.exe AspMVCAdminLTE.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+        
