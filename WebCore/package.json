@@ -93,7 +93,7 @@
     "jquery-validation": "^1.19.1",
     "jqvmap-novulnerability": "^1.5.1",
     "jsgrid": "^1.5.3",
-    "jszip": "^3.3.0",
+    "jszip": "^3.7.0",
     "moment": "^2.24.0",
     "overlayscrollbars": "^1.11.0",
     "pdfmake": "^0.1.65",
